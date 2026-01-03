@@ -1,6 +1,9 @@
 import { sql, CategoryWithTasks, Task, Category } from '@/lib/db';
 import { CategoryCard } from '@/components/CategoryCard';
 
+// Force dynamic rendering - database connection happens at runtime only
+export const dynamic = 'force-dynamic';
+
 // Get day abbreviation
 function getDayCode(date: Date): string {
   const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
