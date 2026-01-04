@@ -1,4 +1,4 @@
-import { sql, CategoryWithTasks, Task, Category } from '@/lib/db';
+import { getDb, CategoryWithTasks, Task, Category } from '@/lib/db';
 import { CategoryCard } from '@/components/CategoryCard';
 
 // Force dynamic rendering - database connection happens at runtime only
@@ -29,6 +29,8 @@ function shouldShowTask(task: Task, dayCode: string): boolean {
 }
 
 async function getCategoriesWithTasks(date: string, dayCode: string): Promise<CategoryWithTasks[]> {
+  const sql = getDb();
+
   // Get all categories
   const categories = await sql`
     SELECT id, name, icon, sort_order 
